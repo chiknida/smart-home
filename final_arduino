@@ -1,0 +1,39 @@
+#include <SoftwareSerial.h>
+
+SoftwareSerial mySerial(10, 11); // RX, TX
+
+void setup() {
+  // Open serial communications and wait for port to open:
+  Serial.begin(9600);
+  mySerial.begin(9600);
+  pinMode(13, OUTPUT);
+  digitalWrite(13, LOW);
+}
+
+void loop() { // run over and over
+  if (mySerial.available()) {
+    char temp = mySerial.read();
+    Serial.println(temp);
+    if (temp=='a')
+      digitalWrite(2, HIGH);
+    else if (temp=='b')
+      digitalWrite(2,LOW);
+    else if (temp=='c')
+      digitalWrite(3,HIGH);
+    else if (temp=='d')
+      digitalWrite(3,LOW);
+    else if (temp=='e')
+      digitalWrite(4,HIGH);
+    else if (temp=='f')
+      digitalWrite(4,LOW);
+    else if (temp=='g')
+      digitalWrite(5,HIGH);
+    else if (temp=='h')
+      digitalWrite(5,LOW);
+    else if (temp=='i')
+      digitalWrite(13,HIGH);
+    else if (temp=='j')
+      digitalWrite(13,LOW);
+  }
+}
+
